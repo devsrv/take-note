@@ -1,0 +1,106 @@
+body{margin: 0; padding: 0; background: #eaeaea;}
+.mb {margin-bottom: 25px;}
+.img-circle {border-radius: 50%;}
+.message-p {background: #f5f5f5;height: 300px;box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);}
+.message-p .message-header {
+    background: #dcdfe3;
+    padding: 3px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.message-p h5 {
+    font-weight: 400;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.centered {text-align: center;}
+.message-p p {
+    font-weight: 400;
+    color: #797979;
+    font-size: 13px;
+}
+.message-p name {
+    color: #ed5565;
+    font-weight: 700;
+}
+.message-p .small {
+    font-size: 11px;
+    color: #aab2bd;
+    margin-top: -10px;
+}
+.message-p .message {
+    font-size: 12px;
+}
+.message-p .form-inline .form-group {
+    width: 80%; margin-right: 6px;
+}
+.message-p .form-inline .form-control {
+    width: 100%;
+    font-size: 14px;
+    height: 39px;
+}
+button.sent-btn{
+	background: #22c5c7;
+	color: #fff;
+	display: inline-block;
+	border-radius: 4px; 
+	cursor: pointer; 
+	border: 1px solid #22c5c7; 
+	padding: 8px 17px;
+	font-size: 14px;
+	font-weight: 400;
+	transition: all 0.4s;
+}
+button.sent-btn:hover{background: #000; border: 1px solid #000;}
+.activity{background: #d6d9dc;padding-top: 20px; overflow-y: scroll; height: 250px;}
+.activity h4{font-size: 14px; font-weight: 600; color: #979797;}
+.activity .desc {
+    border-bottom: 1px dotted #979797;
+    display: inline-block;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+}
+.activity .desc:hover{background: #fff;}
+.activity .thumb {
+    width: 30px;
+    margin: 0 10px 0 20px;
+    display: block;
+    float: left;
+}
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #999;
+    border-radius: 10px;
+    background-color: #4ECDC4;
+}
+.activity .details {
+    width: 80%;
+    float: left;
+}
+.activity .details p{margin-bottom: 0; font-size: 13px;}
+.activity .details p a{color: #269c94; text-decoration: none;}
+.activity .details p a:hover{color: #000;}
+#bar::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#bar::-webkit-scrollbar-thumb
+{
+	background-color: #0ae;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}

@@ -1,0 +1,52 @@
+.task-list{margin-top: 50px;margin-bottom: 50px;}
+.headerbox{background-image: linear-gradient( 135deg, #79F1A4 10%, #0E5CAD 100%);}
+.footer { 
+    background-color: #2f2f2f;
+    color: #fff;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-image: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+}
+#loading {
+    -webkit-animation: rotation 5s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+p.text-white a{color: #fff;}
+span.ml-10{margin-left: 10px;}
+div.form-box{padding: 4px 35px 0px 0px;}
+.card-box{display: inline-block;
+    padding: 0;
+    width: 49.7%;
+    margin-bottom: 15px;
+}
+div.empty-trash{padding-top: 20px;}
+div.empty-trash h3{font-size: 18px;}
+
+/**search box**/
+input[type=search] {
+    width: 240px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=search]:focus {
+    width: 100%;
+    outline: none;
+}

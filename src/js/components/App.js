@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import logo from './../../images/logo.svg';
-import './../../css/App.css';
+
+import './../../css/bootstrap-4/css/bootstrap.min.css';
+import './../../css/style.css';
+import './../../css/demo.css';
+import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
+
+import Header from './Header';
+import Footersection from './Footersection';
+import Contents from './Contents';
+import AddNote from './AddNote';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Header />
+
+        <Contents>
+          <AddNote></AddNote>
+        </Contents>
+
+        <Footersection />
       </div>
     );
   }
