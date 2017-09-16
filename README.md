@@ -1,7 +1,13 @@
-# Note Keeper
+# :clipboard: Note Keeper
 
-note keeping app in React
+a basic note keeping app in React
 
- * React 15.6.1
- * Bootstrap 4
- * Create react App
+*Technology used*
+
+* [React 15.6.1](https://facebook.github.io/react/)
+* [Bootstrap 4](https://getbootstrap.com/)
+* [Create react App](https://github.com/facebookincubator/create-react-app)
+
+### License
+
+This application is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT)
