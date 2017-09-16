@@ -8,16 +8,20 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import Header from './Header';
 import Footersection from './Footersection';
 import Contents from './Contents';
-import AddNote from './AddNote';
+import AddNote, {ListNotes} from './AddNote';
 
 class App extends Component {
   render() {
+
     return (
       <div>
         <Header />
 
         <Contents>
-          <AddNote></AddNote>
+          <AddNote />
+
+          <ListNotes />
+
         </Contents>
 
         <Footersection />
