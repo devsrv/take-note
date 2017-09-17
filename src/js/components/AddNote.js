@@ -3,10 +3,6 @@ import userlogo from '../../images/user.png';
 import NProgress from 'nprogress';
 import '../../../node_modules/nprogress/nprogress.css'; 
 
-import Note from './Note';
-
-let notes = [{title:'my title', desc:'my desc'}];
-
 export default class AddNote extends Component{
 	constructor(props)
 	{
@@ -28,9 +24,7 @@ export default class AddNote extends Component{
 		await this.wait(1000);
 
 		let newNote = {title:this.state.title, desc:this.state.description};
-		notes.push(newNote);
-
-		console.log(notes);
+		this.props.onNoteAdd(newNote);
 
 		NProgress.set(1.0);
 	}
@@ -95,78 +89,6 @@ export default class AddNote extends Component{
 					</div>
 				</div>
 			</section>
-		);
-	}
-}
-
-export function ListTrash()
-{
-	return(
-		<div className="desc">
-			<div className="thumb">
-				<span className="badge"><i className="fa fa-clock-o"></i></span>
-			</div>
-			<div className="details">
-				<p>
-					<strong>Lorem ipsum task title . .</strong>
-					<br/>
-					removed at 3sec ago<br/>
-				</p>
-			</div>
-        </div>
-	);
-}
-
-export function EmptyTrash()
-{
-	return(
-		<div className="empty-trash">
-			<div className="text-center">
-				<h3>Trash box empty</h3>
-			</div>
-        </div>
-	);
-}
-
-export class ListNotes extends Component{
-	constructor(props)
-	{
-		super(props);
-	}
-
-	render()
-	{
-		const activenotes = notes.map((note, index) =>
-	      	<Note key={index} title={note.title} desc={note.desc} />
-	    );
-
-		return(
-			<section className="task-list">
-                <div className="row">
-                    <div className="col-md-8">
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                <input type="search" name="search" placeholder="Search.." />
-                            </div>
-                        </div>
-                        <br/>
-                        
-                        {activenotes}
-
-                    </div>
-
-                    <div className="col-md-4 activity scrollbar" id="bar">
-                        <h4 className="centered">RECOVER DELETED TASKS</h4>
-
-                        <EmptyTrash />
-
-                        <ListTrash />
-
-                    </div>
-                    <div className="clearfix"></div>
-                </div>
-            </section>
 		);
 	}
 }

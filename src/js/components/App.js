@@ -8,26 +8,42 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import Header from './Header';
 import Footersection from './Footersection';
 import Contents from './Contents';
-import AddNote, {ListNotes} from './AddNote';
+import AddNote from './AddNote';
+import ListNotes from './ListNotes';
 
 class App extends Component {
-  render() {
+    constructor(props)
+    {
+        super(props);
+        this.state = {activenotes: [{title:`I'm a dummy title you can edit me`, desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod'}]};
+        this.handleNoteAdded = this.handleNoteAdded.bind(this);
+    }
 
-    return (
-      <div>
-        <Header />
+    handleNoteAdded(note)
+    {
+        this.setState((prevState, props) => ({
+            activenotes: prevState.activenotes.concat([note])
+        }));
+    }
 
-        <Contents>
-          <AddNote />
+    render() {
 
-          <ListNotes />
+        return (
+            <div>
+                <Header />
 
-        </Contents>
+                <Contents>
 
-        <Footersection />
-      </div>
-    );
-  }
+                    <AddNote onNoteAdd={this.handleNoteAdded} />
+
+                    <ListNotes notes={this.state.activenotes} />
+
+                </Contents>
+
+                <Footersection />
+            </div>
+        );
+    }
 }
 
 export default App;
