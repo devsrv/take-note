@@ -38,8 +38,8 @@ export default class ListNotes extends Component{
 
 	render()
 	{
-		const activenotes = this.props.notes.map((note, index) =>
-	      	<Note key={index} title={note.title} desc={note.desc} />
+		const activenotes = this.props.notes.map((note) =>
+	      	<Note key={note.id} title={note.title} desc={note.desc} color={note.color} />
 	    );
 
 		return(

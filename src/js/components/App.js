@@ -10,20 +10,23 @@ import Footersection from './Footersection';
 import Contents from './Contents';
 import AddNote from './AddNote';
 import ListNotes from './ListNotes';
+import randomId from './../randomId';
 
 class App extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {activenotes: [{title:`I'm a dummy title you can edit me`, desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod'}]};
+        this.state = {activenotes: [{id:randomId(), title:`I'm a dummy title you can edit me`, desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod', color:'#f7f7f9'}]};
         this.handleNoteAdded = this.handleNoteAdded.bind(this);
     }
 
     handleNoteAdded(note)
     {
-        this.setState((prevState, props) => ({
-            activenotes: prevState.activenotes.concat([note])
-        }));
+        this.setState(function(prevState, props) {
+            let currnotes = prevState.activenotes;
+            currnotes.unshift(note);
+            return {activenotes: currnotes}    
+        });
     }
 
     render() {

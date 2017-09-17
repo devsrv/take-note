@@ -5,7 +5,7 @@ export default class Note extends Component{
 	constructor(props)
 	{
 		super(props);
-		this.state = {title:this.props.title, desc:this.props.desc};
+		this.state = {title:this.props.title, color:this.props.color, desc:this.props.desc};
 		this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -19,7 +19,7 @@ export default class Note extends Component{
 		return(
 			<div className="col-md-6 card-box">
                 <div className="card">
-                    <div className="card-header">
+                    <div className="card-header" style={{background:this.state.color}}>
 						<div className="row">
 							<div className="col-md-9">
 								<h5>

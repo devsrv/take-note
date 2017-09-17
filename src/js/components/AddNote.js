@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import userlogo from '../../images/user.png';
 import NProgress from 'nprogress';
-import '../../../node_modules/nprogress/nprogress.css'; 
+import '../../../node_modules/nprogress/nprogress.css';
+
+import randomId from './../randomId'; 
 
 export default class AddNote extends Component{
 	constructor(props)
 	{
 		super(props);
-		this.state = {title:'', color:'#f7f7f9', description:''};
+		this.state = {id:'', title:'', color:'#f7f7f9', description:''};
 		this.handleAddNote = this.handleAddNote.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -23,7 +25,7 @@ export default class AddNote extends Component{
 		NProgress.set(0.4);
 		await this.wait(1000);
 
-		let newNote = {title:this.state.title, desc:this.state.description};
+		let newNote = {id:randomId(), title:this.state.title, desc:this.state.description, color:this.state.color};
 		this.props.onNoteAdd(newNote);
 
 		NProgress.set(1.0);
