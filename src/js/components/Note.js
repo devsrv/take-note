@@ -5,13 +5,25 @@ export default class Note extends Component{
 	constructor(props)
 	{
 		super(props);
-		this.state = {title:this.props.title, color:this.props.color, desc:this.props.desc};
+		this.state = {
+			title:this.props.title, 
+			color:this.props.color, 
+			desc:this.props.desc, 
+			starred:this.props.starred
+		};
+
 		this.handleChange = this.handleChange.bind(this);
+		this.starToggle = this.starToggle.bind(this);
 	}
 
 	handleChange(e)
 	{
 		this.setState({title: e.target.value});
+	}
+
+	starToggle()
+	{
+		this.setState((prevState, props) => ({starred: ! prevState.starred}));
 	}
 
 	render()
@@ -27,8 +39,14 @@ export default class Note extends Component{
 								</h5>
 							</div>
 							<div className="col-md-3">
-								<i className="fa fa-star-o" aria-hidden="true"></i>
-								<span className="pull-right">
+								<span className="star" onClick={this.starToggle}>
+									{this.state.starred?
+										<i className="fa fa-star starred" aria-hidden="true"></i>
+										:
+										<i className="fa fa-star-o" aria-hidden="true"></i>
+									}
+								</span>
+								<span className="pull-right delete">
 									<i className="fa fa-trash-o" aria-hidden="true"></i>
 								</span>
 							</div>

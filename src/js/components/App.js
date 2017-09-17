@@ -16,7 +16,17 @@ class App extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {activenotes: [{id:randomId(), title:`I'm a dummy title you can edit me`, desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod', color:'#f7f7f9'}]};
+        this.state = {
+            activenotes: [
+                {
+                    id:randomId(), 
+                    title:`I'm a dummy title you can edit me`, 
+                    desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod', 
+                    color:'#f7f7f9',
+                    starred:true
+                }
+            ]
+        };
         this.handleNoteAdded = this.handleNoteAdded.bind(this);
     }
 

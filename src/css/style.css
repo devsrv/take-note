@@ -50,3 +50,6 @@ input[type=search]:focus {
     width: 100%;
     outline: none;
 }
+
+span.star, span.delete{cursor: pointer;}
+.starred{color: #1bc511;}

@@ -31,15 +31,11 @@ export function EmptyTrash()
 }
 
 export default class ListNotes extends Component{
-	constructor(props)
-	{
-		super(props);
-	}
 
 	render()
 	{
 		const activenotes = this.props.notes.map((note) =>
-	      	<Note key={note.id} title={note.title} desc={note.desc} color={note.color} />
+	      	<Note key={note.id} title={note.title} desc={note.desc} color={note.color} starred={note.starred} />
 	    );
 
 		return(
