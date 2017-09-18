@@ -39,8 +39,6 @@ class App extends Component {
             currnotes.unshift(note);
             return {activenotes: currnotes}    
         });
-
-        console.log(this.state.activenotes);
     }
 
     handleTrash(noteId)
@@ -56,8 +54,6 @@ class App extends Component {
         });
     
         this.setState({activenotes:filterredNotes});
-
-        console.log(filterredNotes);
     }
 
     render() {
