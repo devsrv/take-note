@@ -39,11 +39,25 @@ class App extends Component {
             currnotes.unshift(note);
             return {activenotes: currnotes}    
         });
+
+        console.log(this.state.activenotes);
     }
 
     handleTrash(noteId)
     {
-        console.log(noteId);
+        const filterredNotes = this.state.activenotes.map(function(note){
+
+            if(note.id === noteId)
+            {
+                note.active = false;
+            }
+            
+            return note;
+        });
+    
+        this.setState({activenotes:filterredNotes});
+
+        console.log(filterredNotes);
     }
 
     render() {

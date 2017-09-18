@@ -8,13 +8,15 @@ export default function Footersection()
 	            <div className="col-md-8 offset-md-2">
 	                <p className="pull-right text-white">
 	                    <span>
-	                        <i className="fa fa-twitter" aria-hidden="true"></i>
-	                        <a href="https://twitter.com/srvrksh" rel="noopener noreferrer" target="_blank">@srvrksh</a>
+	                        <a href="https://twitter.com/srvrksh" rel="noopener noreferrer" target="_blank">
+	                        	<i className="fa fa-twitter" aria-hidden="true"></i> @srvrksh
+	                        </a>
 	                    </span>
 	                    
 	                    <span className="ml-10">
-	                        <i className="fa fa-github" aria-hidden="true"></i>
-	                        <a href="https://github.com/devsrv" rel="noopener noreferrer" target="_blank">devsrv</a>
+	                        <a href="https://github.com/devsrv" rel="noopener noreferrer" target="_blank">
+	                        	<i className="fa fa-github" aria-hidden="true"></i> devsrv
+	                        </a>
 	                    </span>
 	                </p>
 	            </div>
