@@ -9,7 +9,7 @@ export default class AddNote extends Component{
 	constructor(props)
 	{
 		super(props);
-		this.state = {id:'', title:'', color:'#f7f7f9', description:''};
+		this.state = {title:'', color:'#f7f7f9', description:''};
 		this.handleAddNote = this.handleAddNote.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -30,7 +30,8 @@ export default class AddNote extends Component{
 			title:this.state.title, 
 			desc:this.state.description, 
 			color:this.state.color,
-			starred:false
+			starred:false,
+			active:true
 		};
 		this.props.onNoteAdd(newNote);
 

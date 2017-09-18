@@ -31,11 +31,29 @@ export function EmptyTrash()
 }
 
 export default class ListNotes extends Component{
+	constructor(props)
+	{
+		super(props);
+		this.noteTrashed = this.noteTrashed.bind(this);
+	}
+
+	noteTrashed(noteId)
+	{
+		this.props.isTrashed(noteId);
+	}
 
 	render()
 	{
-		const activenotes = this.props.notes.map((note) =>
-	      	<Note key={note.id} title={note.title} desc={note.desc} color={note.color} starred={note.starred} />
+		const scopeThis = this;
+
+		const activenotes = this.props.notes.map(function(note)
+	      	{
+	      		if(note.active)
+	      		{
+	      			return <Note key={note.id} noteId={note.id} title={note.title} desc={note.desc} color={note.color} starred={note.starred} onTrashed={scopeThis.noteTrashed} />
+	      		}
+	      		return null;
+	      	}
 	    );
 
 		return(

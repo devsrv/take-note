@@ -9,11 +9,13 @@ export default class Note extends Component{
 			title:this.props.title, 
 			color:this.props.color, 
 			desc:this.props.desc, 
-			starred:this.props.starred
+			starred:this.props.starred,
+			active:this.props.active
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.starToggle = this.starToggle.bind(this);
+		this.trashNote = this.trashNote.bind(this);
 	}
 
 	handleChange(e)
@@ -24,6 +26,11 @@ export default class Note extends Component{
 	starToggle()
 	{
 		this.setState((prevState, props) => ({starred: ! prevState.starred}));
+	}
+
+	trashNote()
+	{
+		this.props.onTrashed(this.props.noteId);
 	}
 
 	render()
@@ -46,7 +53,7 @@ export default class Note extends Component{
 										<i className="fa fa-star-o" aria-hidden="true"></i>
 									}
 								</span>
-								<span className="pull-right delete">
+								<span className="pull-right delete" onClick={this.trashNote}>
 									<i className="fa fa-trash-o" aria-hidden="true"></i>
 								</span>
 							</div>

@@ -23,11 +23,13 @@ class App extends Component {
                     title:`I'm a dummy title you can edit me`, 
                     desc:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod', 
                     color:'#f7f7f9',
-                    starred:true
+                    starred:true,
+                    active:true
                 }
             ]
         };
         this.handleNoteAdded = this.handleNoteAdded.bind(this);
+        this.handleTrash = this.handleTrash.bind(this);
     }
 
     handleNoteAdded(note)
@@ -37,6 +39,11 @@ class App extends Component {
             currnotes.unshift(note);
             return {activenotes: currnotes}    
         });
+    }
+
+    handleTrash(noteId)
+    {
+        console.log(noteId);
     }
 
     render() {
@@ -49,7 +56,7 @@ class App extends Component {
 
                     <AddNote onNoteAdd={this.handleNoteAdded} />
 
-                    <ListNotes notes={this.state.activenotes} />
+                    <ListNotes notes={this.state.activenotes} isTrashed={this.handleTrash} />
 
                 </Contents>
 
