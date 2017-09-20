@@ -35,11 +35,17 @@ export default class ListNotes extends Component{
 	{
 		super(props);
 		this.noteTrashed = this.noteTrashed.bind(this);
+		this.starToggled = this.starToggled.bind(this);
 	}
 
 	noteTrashed(noteId)
 	{
 		this.props.isTrashed(noteId);
+	}
+
+	starToggled(noteId)
+	{
+		this.props.isStarred(noteId);
 	}
 
 	render()
@@ -50,7 +56,7 @@ export default class ListNotes extends Component{
 	      	{
 	      		if(note.active)
 	      		{
-	      			return <Note key={note.id} noteId={note.id} title={note.title} desc={note.desc} color={note.color} starred={note.starred} onTrashed={scopeThis.noteTrashed} />
+	      			return <Note key={note.id} noteId={note.id} title={note.title} desc={note.desc} color={note.color} starred={note.starred} onTrashed={scopeThis.noteTrashed} onToggleStar={scopeThis.starToggled} />
 	      		}
 	      		return null;
 	      	}

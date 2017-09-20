@@ -23,9 +23,13 @@ export default class AddNote extends Component{
 	{
 		e.preventDefault();
 		NProgress.set(0.4);
-		await this.wait(1000);
+		await this.wait(200);
+		NProgress.set(0.6);
+		await this.wait(200);
+		NProgress.set(0.7);
+		await this.wait(100);
 
-		let newNote = {
+		const newNote = {
 			id:randomId(), 
 			title:this.state.title, 
 			desc:this.state.description, 

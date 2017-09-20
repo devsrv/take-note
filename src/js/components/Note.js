@@ -25,7 +25,8 @@ export default class Note extends Component{
 
 	starToggle()
 	{
-		this.setState((prevState, props) => ({starred: ! prevState.starred}));
+		//this.setState((prevState, props) => ({starred: ! prevState.starred}));
+		this.props.onToggleStar(this.props.noteId);
 	}
 
 	trashNote()
@@ -47,7 +48,7 @@ export default class Note extends Component{
 							</div>
 							<div className="col-md-3">
 								<span className="star" onClick={this.starToggle}>
-									{this.state.starred?
+									{this.props.starred?
 										<i className="fa fa-star starred" aria-hidden="true"></i>
 										:
 										<i className="fa fa-star-o" aria-hidden="true"></i>
