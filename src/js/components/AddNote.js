@@ -5,13 +5,41 @@ import '../../../node_modules/nprogress/nprogress.css';
 
 import randomId from './../randomId'; 
 
+/**
+*error tooltip component
+*/
+function ErrTooltip(props)
+{
+	if(props.msg !== '')
+	{
+		return (
+			<div className="tooltipx left"><span className="arrow"></span><span className="text">{props.msg}</span></div>
+		);
+	}
+
+	return null;
+}
+
 export default class AddNote extends Component{
 	constructor(props)
 	{
 		super(props);
-		this.state = {title:'', color:'#f7f7f9', description:''};
+		this.state = {title:'', color:'#f7f7f9', description:'', validationErr:false, validationMsg:''};
 		this.handleAddNote = this.handleAddNote.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleKeyUp = this.handleKeyUp.bind(this);
+	}
+
+	validateNote(noteTitle='')
+	{
+		if(noteTitle === '' || noteTitle.length === 0)
+		{
+			this.setState({validationErr:true, validationMsg:'Oops! give some title'});
+			return false;
+		}
+
+		this.setState({validationErr:false, validationMsg:''});
+		return true;
 	}
 
 	wait(ms) 
@@ -22,24 +50,36 @@ export default class AddNote extends Component{
 	async handleAddNote(e)
 	{
 		e.preventDefault();
-		NProgress.set(0.4);
-		await this.wait(200);
-		NProgress.set(0.6);
-		await this.wait(200);
-		NProgress.set(0.7);
-		await this.wait(100);
 
-		const newNote = {
-			id:randomId(), 
-			title:this.state.title, 
-			desc:this.state.description, 
-			color:this.state.color,
-			starred:false,
-			active:true
-		};
-		this.props.onNoteAdd(newNote);
+		let valid = this.validateNote(this.state.title.trim());
+		if(valid)
+		{
+			NProgress.set(0.4);
+			await this.wait(200);
+			NProgress.set(0.6);
+			await this.wait(200);
+			NProgress.set(0.7);
+			await this.wait(100);
 
-		NProgress.set(1.0);
+
+			const newNote = {
+				id:randomId(), 
+				title:this.state.title.trim(), 
+				desc:this.state.description.trim(), 
+				color:this.state.color,
+				starred:false,
+				active:true
+			};
+			this.props.onNoteAdd(newNote);
+
+			//clear the fields
+			this.setState({title:'', color:'#f7f7f9', description:''});
+
+			NProgress.set(1.0);
+		}
+
+		//validation error occurred, stop execution
+		return true;
 	}
 
 	handleChange(e)
@@ -59,6 +99,19 @@ export default class AddNote extends Component{
 		    default:
 		        this.setState({description:input});
 		}
+	}
+
+	handleKeyUp(e)
+	{
+		let input = e.target.value;
+
+		if(input.length > 0)
+		{
+			this.setState({validationErr:false, validationMsg:''});
+			return true;
+		}
+
+		return false;
 	}
 
 	render()
@@ -81,7 +134,8 @@ export default class AddNote extends Component{
 									  
 										<form onSubmit={this.handleAddNote}>
 											<div className="form-group">
-											  <input type="text" value={this.state.title} className="form-control" onChange={this.handleChange} placeholder="Title*" />
+											  <input type="text" value={this.state.title} className="form-control" onChange={this.handleChange} onKeyUp={this.handleKeyUp} placeholder="Title*" />
+												<ErrTooltip msg={this.state.validationMsg} />
 											</div>
 
 											<div className="form-group">
